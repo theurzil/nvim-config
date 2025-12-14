@@ -3,7 +3,7 @@
 
 > Special thanks to [@typecraft_dev](https://x.com/typecraft_dev) for the inspiration and insights that made this configuration possible.
 
-![Neovim Home Screen](https://raw.githubusercontent.com/averrois/nvim-config/refs/heads/master/.github/screeshots/Screenshots.png?token=GHSAT0AAAAAACR7ZOYLFTZ7P2BK5NLFQGZUZYBUYAA)
+![Neovim Home Screen](https://raw.githubusercontent.com/theurzil/nvim-config/refs/heads/master/.github/screeshots/Screenshots.png?token=GHSAT0AAAAAACR7ZOYLFTZ7P2BK5NLFQGZUZYBUYAA)
 
 This is my personal [Neovim](https://neovim.io/) configuration, designed for a smooth and efficient coding experience. It's built using [lazy](http://www.lazyvim.org/) with a focus on Git integration, LSP support, and a sleek appearance using the [Poimandres](https://github.com/olivercederborg/poimandres.nvim) color scheme.
 
@@ -16,7 +16,7 @@ This is my personal [Neovim](https://neovim.io/) configuration, designed for a s
 
 2. Clone this repository:
    ```bash
-   git clone https://github.com/averrois/nvim-config.git ~/.config/nvim
+   git clone https://github.com/theurzil/nvim-config.git ~/.config/nvim
    ```
 
 3. Start Neovim and let it install the plugins:
