@@ -50,10 +50,15 @@ return {
 
 			custom_highlights = function(c)
 				return {
-					CursorLine = { bg = "#111525" },
-					CursorLineNr = { fg = c.sapphire, bold = true },
+					CursorLine = { bg = "#111525" },   -- deep
+					CursorLineNr = { fg = c.sapphire, bold = true }, -- cyan, active line
 
-					-- Comments match dim/inactive text color
+					-- Relative line numbers: dim (#4a6080 = inactive text role)
+					LineNr = { fg = "#4a6080" },
+					LineNrAbove = { fg = "#4a6080" },
+					LineNrBelow = { fg = "#4a6080" },
+
+					-- Comments: dim (inactive text)
 					Comment = { fg = "#4a6080", italic = true },
 
 					-- Floats / popups
@@ -70,8 +75,11 @@ return {
 					Search = { fg = "#0B0E1A", bg = c.yellow, bold = true },
 					IncSearch = { fg = "#0B0E1A", bg = c.sapphire, bold = true },
 
-					-- Selection
+					-- Selection: muted (borders/selection role)
 					Visual = { bg = "#1E3A5F" },
+
+					-- Sign column: transparent to respect blur
+					SignColumn = { bg = "NONE" },
 				}
 			end,
 
