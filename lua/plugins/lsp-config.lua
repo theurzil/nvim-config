@@ -19,6 +19,11 @@ return {
           "tailwindcss",
           "volar",
           "jsonls",
+          "sqlls",
+          "marksman",
+          "yamlls",
+          "eslint",
+          "emmet_language_server",
         },
       })
     end,
@@ -61,6 +66,10 @@ return {
         "tailwindcss",
         "volar",
         "jsonls",
+        "sqlls",
+        "marksman",
+        "yamlls",
+        "eslint",
       }
 
       for _, server in ipairs(servers) do
@@ -68,6 +77,23 @@ return {
           capabilities = capabilities,
         })
       end
+
+      -- Emmet: separate setup with filetypes
+      lspconfig.emmet_language_server.setup({
+        capabilities = capabilities,
+        filetypes = {
+          "html",
+          "css",
+          "scss",
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+          "vue",
+          "astro",
+          "xml",
+        },
+      })
 
       -- Key Bindings using LSPSaga
       vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>")
