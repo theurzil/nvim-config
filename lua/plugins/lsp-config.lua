@@ -17,7 +17,6 @@ return {
           "html",
           "ts_ls",
           "tailwindcss",
-          "volar",
           "jsonls",
           "sqlls",
           "marksman",
@@ -51,11 +50,10 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    dependencies = { "hrsh7th/cmp-nvim-lsp" },
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local lspconfig = require("lspconfig")
 
-      -- Setup all LSP servers
       local servers = {
         "lua_ls",
         "gopls",
@@ -64,7 +62,6 @@ return {
         "html",
         "ts_ls",
         "tailwindcss",
-        "volar",
         "jsonls",
         "sqlls",
         "marksman",
@@ -73,13 +70,10 @@ return {
       }
 
       for _, server in ipairs(servers) do
-        lspconfig[server].setup({
-          capabilities = capabilities,
-        })
+        vim.lsp.config(server, { capabilities = capabilities })
       end
 
-      -- Emmet: separate setup with filetypes
-      lspconfig.emmet_language_server.setup({
+      vim.lsp.config("emmet_language_server", {
         capabilities = capabilities,
         filetypes = {
           "html",
@@ -94,6 +88,8 @@ return {
           "xml",
         },
       })
+
+      vim.lsp.enable(vim.list_extend(servers, { "emmet_language_server" }))
 
       -- Key Bindings using LSPSaga
       vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>")
