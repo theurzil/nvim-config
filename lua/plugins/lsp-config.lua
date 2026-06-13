@@ -92,7 +92,18 @@ return {
       vim.lsp.enable(vim.list_extend(servers, { "emmet_language_server" }))
 
       -- Key Bindings using LSPSaga
-      vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+      vim.keymap.set("n", "K", function()
+        local cursor = vim.api.nvim_win_get_cursor(0)
+        local line, col = cursor[1] - 1, cursor[2]
+        local diagnostics = vim.diagnostic.get(0, { lnum = line })
+        for _, d in ipairs(diagnostics) do
+          if col >= d.col and col < d.end_col then
+            vim.cmd("Lspsaga show_line_diagnostics")
+            return
+          end
+        end
+        vim.cmd("Lspsaga hover_doc")
+      end)
       vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
       vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>")
       vim.keymap.set("n", "gr", "<cmd>Lspsaga finder<CR>")
